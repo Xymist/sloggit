@@ -14,7 +14,7 @@ type Game struct {
 // CurrentLocation is... the player's current location!
 var CurrentLocation *Location
 
-// Play is the game loop
+// Play defines the game loop
 func (g *Game) Play() {
 	CurrentLocation = locationMap["startClearing"]
 	fmt.Println(g.Welcome)
@@ -22,7 +22,7 @@ func (g *Game) Play() {
 		fmt.Println(CurrentLocation.Description) //Where are you?
 		g.ProcessEvents(CurrentLocation.Events)  //Did anything happen here?
 		if g.Health < 0 {                        //Are you dead?
-			fmt.Println("You are dead, game over!!!")
+			fmt.Println("You are dead, game over!")
 			return
 		}
 		if g.Health > g.maxHealth {
