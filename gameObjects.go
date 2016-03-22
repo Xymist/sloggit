@@ -36,3 +36,7 @@ type chest struct {
 	physObject
 	contents []string
 }
+
+type equipment struct {
+	physObject
+}

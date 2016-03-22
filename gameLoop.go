@@ -28,7 +28,8 @@ func (g *Game) Play() {
 		if g.Health > g.maxHealth {
 			g.Health = g.maxHealth
 		}
-		fmt.Println("Equipment: ", g.playerCharacter.weapon.name, "and", g.playerCharacter.shield.name)
+		fmt.Println("Armament: ", g.playerCharacter.weapon.name, "and", g.playerCharacter.shield.name)
+		fmt.Println("Inventory Slots: ", g.playerCharacter.inventoryOne.name, g.playerCharacter.inventoryTwo.name, g.playerCharacter.inventoryThree.name, g.playerCharacter.inventoryFour.name, g.playerCharacter.inventoryFive.name, g.playerCharacter.inventorySix.name)
 		fmt.Printf("Health: %d\n\n", g.Health)    //Print health information
 		fmt.Println("What would you like to do?") //Where can you go from here?
 		for index, loc := range CurrentLocation.Transitions {

@@ -9,6 +9,7 @@ type organism struct {
 	age               int
 	hitpoints         int
 	traitList
+	inventoryOne, inventoryTwo, inventoryThree, inventoryFour, inventoryFive, inventorySix *equipment
 }
 
 func (o *organism) takeDamage(damage int) {
