@@ -16,7 +16,7 @@ var CurrentLocation *Location
 
 // Play defines the game loop
 func (g *Game) Play() {
-	CurrentLocation = locationMap["startClearing"]
+	CurrentLocation = locationMap["Enter the clearing"]
 	fmt.Println(g.Welcome)
 	for {
 		fmt.Println(CurrentLocation.Description) //Where are you?
@@ -28,15 +28,15 @@ func (g *Game) Play() {
 		if g.Health > g.maxHealth {
 			g.Health = g.maxHealth
 		}
-		fmt.Println(g.playerCharacter.weapon.name)
-		fmt.Printf("Health: %d\n", g.Health)      //Print health information
+		fmt.Println("Equipment: ", g.playerCharacter.weapon.name, "and", g.playerCharacter.shield.name)
+		fmt.Printf("Health: %d\n\n", g.Health)    //Print health information
 		fmt.Println("What would you like to do?") //Where can you go from here?
 		for index, loc := range CurrentLocation.Transitions {
 			fmt.Printf("\t%d - %s\n", index+1, loc)
 		}
 		i := 0
 		for i < 1 || i > len(CurrentLocation.Transitions) { //What would you like to do?
-			fmt.Printf("%s%d%s\n", "Choose a direction. (0 - to quit), [1...", len(CurrentLocation.Transitions), "]: ")
+			fmt.Println("Choose an action: ")
 			fmt.Scan(&i)
 		}
 		newLoc := i - 1
