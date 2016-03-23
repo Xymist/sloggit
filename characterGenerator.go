@@ -26,8 +26,8 @@ func generateCharacter() character {
 		wisd = genRandom(3, 20)
 
 		fmt.Println("Agility: ", agil, "Charisma: ", char, "Dexterity: ", dext, "Intelligence: ", inte, "Strength: ", stre, "Wisdom: ", wisd)
-		fmt.Println("Is this OK? (Y/N)")
-		fmt.Scan(&accept) //TODO: Handle incorrect input here.
+		fmt.Println("Is this OK? (y/N)")
+		fmt.Scan(&accept)
 	}
 
 	var generatedCharacter = character{
