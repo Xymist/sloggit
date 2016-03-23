@@ -42,6 +42,7 @@ func generateCharacter() character {
 		organism: organism{
 			name:         myName,
 			description:  "This is you!",
+			isPlayer:     true,
 			age:          16,
 			hitpoints:    100,
 			maxHitpoints: 100,

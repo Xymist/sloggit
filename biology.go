@@ -6,6 +6,7 @@ type traitList struct {
 
 type organism struct {
 	name, description string
+	isPlayer          bool
 	age               int
 	hitpoints         int
 	maxHitpoints      int

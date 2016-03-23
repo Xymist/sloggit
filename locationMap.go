@@ -2,24 +2,25 @@ package main
 
 // Location is each place the player could exist
 type Location struct {
-	Description string
-	Chests      []string
-	Transitions []string
-	Events      []string
+	description     string
+	chests          []string
+	transitions     []string
+	events          []string
+	encounterChance int
 }
 
 var locationMap = map[string]*Location{
-	"Enter the clearing":             {clearingText, []string{}, []string{"Go North", "Go South", "Go East", "Go West"}, []string{"monsterAttack"}},
-	"Go North":                       {startNorthText, []string{}, []string{"Enter the clearing"}, []string{}},
-	"Go South":                       {startSouthText, []string{}, []string{"Enter the clearing"}, []string{}},
-	"Go East":                        {startEastText, []string{}, []string{"Enter the clearing"}, []string{}},
-	"Go West":                        {startWestText, []string{}, []string{"Follow the river upstream", "Follow the river downstream", "Enter the clearing"}, []string{"fishJump"}},
-	"Follow the river upstream":      {upRiverText, []string{}, []string{"Duck into the cave", "Look for a good tree to climb", "Head further North"}, []string{}},
-	"Follow the river downstream":    {downRiverText, []string{}, []string{"Leap from the cliff"}, []string{}},
-	"Leap from the cliff":            {cliffJumpText, []string{}, []string{}, []string{"cliffSplatter"}},
-	"Duck into the cave":             {caveEntranceText, []string{"Cave Chest"}, []string{}, []string{"bearAttack"}},
-	"Look for a good tree to climb":  {treeClimbText, []string{}, []string{}, []string{}},
-	"Head further North":             {farNorthText, []string{}, []string{}, []string{}},
-	"Enter the dungeon":              {dungeonEntranceText, []string{}, []string{"Fling yourself into the portal"}, []string{"guardianAttack"}},
-	"Fling yourself into the portal": {portalFallText, []string{}, []string{}, []string{"homecoming"}},
+	"Enter the clearing":             {description: clearingText, chests: []string{}, transitions: []string{"Go North", "Go South", "Go East", "Go West"}, events: []string{"Monster Attack"}, encounterChance: 30},
+	"Go North":                       {description: startNorthText, chests: []string{}, transitions: []string{"Enter the clearing"}, events: []string{}, encounterChance: 30},
+	"Go South":                       {description: startSouthText, chests: []string{}, transitions: []string{"Enter the clearing"}, events: []string{}, encounterChance: 30},
+	"Go East":                        {description: startEastText, chests: []string{}, transitions: []string{"Enter the clearing"}, events: []string{}, encounterChance: 30},
+	"Go West":                        {description: startWestText, chests: []string{}, transitions: []string{"Follow the river upstream", "Follow the river downstream", "Enter the clearing"}, events: []string{}, encounterChance: 30},
+	"Follow the river upstream":      {description: upRiverText, chests: []string{}, transitions: []string{"Duck into the cave", "Look for a good tree to climb", "Head further North"}, events: []string{}, encounterChance: 30},
+	"Follow the river downstream":    {description: downRiverText, chests: []string{}, transitions: []string{"Leap from the cliff"}, events: []string{}, encounterChance: 30},
+	"Leap from the cliff":            {description: cliffJumpText, chests: []string{}, transitions: []string{}, events: []string{"cliffSplatter"}, encounterChance: 30},
+	"Duck into the cave":             {description: caveEntranceText, chests: []string{"Cave Chest"}, transitions: []string{}, events: []string{"Grizzly Attack"}, encounterChance: 80},
+	"Look for a good tree to climb":  {description: treeClimbText, chests: []string{}, transitions: []string{}, events: []string{}, encounterChance: 30},
+	"Head further North":             {description: farNorthText, chests: []string{}, transitions: []string{}, events: []string{}, encounterChance: 30},
+	"Enter the dungeon":              {description: dungeonEntranceText, chests: []string{}, transitions: []string{"Fling yourself into the portal"}, events: []string{}, encounterChance: 30},
+	"Fling yourself into the portal": {description: portalFallText, chests: []string{}, transitions: []string{}, events: []string{}, encounterChance: 30},
 }

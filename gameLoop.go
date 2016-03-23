@@ -17,9 +17,11 @@ func (g *Game) Play() {
 	CurrentLocation = locationMap["Enter the clearing"]
 	fmt.Println(g.Welcome)
 	for {
-		fmt.Println(CurrentLocation.Description) //Where are you?
-		g.ProcessEvents(CurrentLocation.Events)  //Did anything happen here?
-		if g.playerCharacter.hitpoints < 0 {     //Are you dead?
+		fmt.Println(CurrentLocation.description) //Where are you?
+		if CurrentLocation.encounterChance > genRandom(0, 99) {
+			//Combat initiation here
+		}
+		if g.playerCharacter.hitpoints < 0 { //Are you dead?
 			fmt.Println("You are dead, game over!")
 			return
 		}
@@ -30,23 +32,16 @@ func (g *Game) Play() {
 		fmt.Println("Inventory Slots: ", g.playerCharacter.inventoryOne.name, g.playerCharacter.inventoryTwo.name, g.playerCharacter.inventoryThree.name, g.playerCharacter.inventoryFour.name, g.playerCharacter.inventoryFive.name, g.playerCharacter.inventorySix.name)
 		fmt.Printf("Health: %d\n\n", g.playerCharacter.hitpoints) //Print health information
 		fmt.Println("What would you like to do?")                 //Where can you go from here?
-		for index, loc := range CurrentLocation.Transitions {
+		for index, loc := range CurrentLocation.transitions {
 			fmt.Printf("\t%d - %s\n", index+1, loc)
 		}
 		i := 0
-		for i < 1 || i > len(CurrentLocation.Transitions) { //What would you like to do?
+		for i < 1 || i > len(CurrentLocation.transitions) { //What would you like to do?
 			fmt.Println("Choose an action: ")
 			fmt.Scan(&i)
 		}
 		newLoc := i - 1
-		CurrentLocation = locationMap[CurrentLocation.Transitions[newLoc]] //Go to new location based on input
+		CurrentLocation = locationMap[CurrentLocation.transitions[newLoc]] //Go to new location based on input
 
-	}
-}
-
-// ProcessEvents is the command to process events occurring this loop
-func (g *Game) ProcessEvents(events []string) {
-	for _, evtName := range events {
-		g.playerCharacter.hitpoints += evts[evtName].ProcessEvent()
 	}
 }
