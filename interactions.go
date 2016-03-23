@@ -1,18 +1,8 @@
 package main
 
-import (
-	"math/rand"
-	"time"
-)
-
-func genRandom(min, max int) int {
-	rSource := rand.NewSource(time.Now().UnixNano())
-	rRand := rand.New(rSource)
-	return rRand.Intn(max-min) + min
-}
-
 type hittable interface {
 	takeDamage(int)
+	updateStatus(*statusEffect)
 }
 
 type entity interface {
@@ -21,6 +11,11 @@ type entity interface {
 
 func attack(h hittable, weapon weapon) {
 	h.takeDamage(weapon.baseDamage)
+	insult := genRandom(0, 99)
+	if weapon.bonus.chance > insult {
+		h.takeDamage(weapon.bonus.bonusDamage)
+		h.updateStatus(weapon.bonus.statusEffect)
+	}
 	weapon.integrity--
 }
 

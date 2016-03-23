@@ -10,6 +10,7 @@ type organism struct {
 	hitpoints         int
 	maxHitpoints      int
 	traitList
+	statusEffect *statusEffect
 }
 
 func (o *organism) takeDamage(damage int) {

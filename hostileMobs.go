@@ -9,6 +9,14 @@ type npc struct { //Includes things like motile trees; any agent that is not a p
 	size int
 }
 
+func (n *npc) takeDamage(damage int) {
+	n.hitpoints = n.hitpoints - damage
+}
+
+func (n *npc) updateStatus(statusEffect *statusEffect) {
+	n.statusEffect = statusEffect
+}
+
 var hostileMobs = map[string]*npc{
 	"Small Kobold": {organism: organism{
 		name:        "Small Kobold",

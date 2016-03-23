@@ -9,6 +9,14 @@ type character struct { //Player characters. Currently singular, but may not be 
 	inventoryOne, inventoryTwo, inventoryThree, inventoryFour, inventoryFive, inventorySix *equipment
 }
 
+func (c *character) takeDamage(damage int) {
+	c.hitpoints = c.hitpoints - damage
+}
+
+func (c *character) updateStatus(statusEffect *statusEffect) {
+	c.statusEffect = statusEffect
+}
+
 func generateCharacter() character {
 	myName := "Steve"
 	fmt.Println("Please enter your name:")
