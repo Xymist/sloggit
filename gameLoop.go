@@ -6,7 +6,7 @@ import "fmt"
 type Game struct {
 	Welcome         string
 	CurrentLocation string
-	playerCharacter character
+	playerCharacter *character
 }
 
 // CurrentLocation is... the player's current location!
@@ -15,20 +15,27 @@ var CurrentLocation *Location
 // Play defines the game loop
 func (g *Game) Play() {
 	CurrentLocation = locationMap["Enter the clearing"]
+	priorLocation := locationMap["Enter the clearing"]
 	fmt.Println(g.Welcome)
 	for {
+		runaway := false
 		fmt.Println(CurrentLocation.description) //Where are you?
 		if CurrentLocation.encounterChance > genRandom(0, 99) {
-			//Combat initiation here
+			runaway = combatCycle(g.playerCharacter, encounterMob(CurrentLocation.locationEncounter), false)
 		}
-		if g.playerCharacter.hitpoints < 0 { //Are you dead?
+		if g.playerCharacter.hitpoints <= 0 { //Are you dead?
 			fmt.Println("You are dead, game over!")
 			return
+		}
+		if runaway == true {
+			CurrentLocation = priorLocation
+			fmt.Print("You have returned to your previous location.\n")
+			fmt.Println(CurrentLocation.description)
 		}
 		if g.playerCharacter.hitpoints > g.playerCharacter.maxHitpoints {
 			g.playerCharacter.hitpoints = g.playerCharacter.maxHitpoints
 		}
-		fmt.Println("Armament: ", g.playerCharacter.weapon.name, "and", g.playerCharacter.shield.name)
+		fmt.Println("Armament: ", g.playerCharacter.weapon1.name, "and", g.playerCharacter.shield.name)
 		fmt.Println("Inventory Slots: ", g.playerCharacter.inventoryOne.name, g.playerCharacter.inventoryTwo.name, g.playerCharacter.inventoryThree.name, g.playerCharacter.inventoryFour.name, g.playerCharacter.inventoryFive.name, g.playerCharacter.inventorySix.name)
 		fmt.Printf("Health: %d\n\n", g.playerCharacter.hitpoints) //Print health information
 		fmt.Println("What would you like to do?")                 //Where can you go from here?
@@ -41,7 +48,7 @@ func (g *Game) Play() {
 			fmt.Scan(&i)
 		}
 		newLoc := i - 1
+		priorLocation = CurrentLocation
 		CurrentLocation = locationMap[CurrentLocation.transitions[newLoc]] //Go to new location based on input
-
 	}
 }

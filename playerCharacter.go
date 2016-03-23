@@ -4,8 +4,9 @@ import "fmt"
 
 type character struct { //Player characters. Currently singular, but may not be later.
 	organism
-	*weapon
+	weapon1 *weapon
 	*shield
+	size                                                                                   int
 	inventoryOne, inventoryTwo, inventoryThree, inventoryFour, inventoryFive, inventorySix *equipment
 }
 
@@ -17,7 +18,7 @@ func (c *character) updateStatus(statusEffect *statusEffect) {
 	c.statusEffect = statusEffect
 }
 
-func generateCharacter() character {
+func generateCharacter() *character {
 	myName := "Steve"
 	fmt.Println("Please enter your name:")
 	fmt.Scan(&myName)
@@ -38,7 +39,7 @@ func generateCharacter() character {
 		fmt.Scan(&accept)
 	}
 
-	var generatedCharacter = character{
+	var generatedCharacter = &character{
 		organism: organism{
 			name:         myName,
 			description:  "This is you!",
@@ -55,7 +56,7 @@ func generateCharacter() character {
 				wisdom:       wisd,
 			},
 		},
-		weapon:         weaponry["Rusty Sword"],
+		weapon1:        weaponry["Rusty Sword"],
 		shield:         defences["Battered Shield"],
 		inventoryOne:   equipmentItems["Empty"],
 		inventoryTwo:   equipmentItems["Empty"],
@@ -63,6 +64,7 @@ func generateCharacter() character {
 		inventoryFour:  equipmentItems["Empty"],
 		inventoryFive:  equipmentItems["Empty"],
 		inventorySix:   equipmentItems["Empty"],
+		size:           1,
 	}
 	return generatedCharacter
 }
