@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/ttacon/chalk"
+)
 
 type combatAction struct {
 	name          string
@@ -14,7 +18,7 @@ var combatOptions = map[string]*combatAction{
 }
 
 func combatLoop(n npc) {
-	fmt.Printf("You have encountered %s!", n.name)
+	fmt.Printf("%sYou have encountered %s!%s", chalk.Red, n.name, chalk.Reset)
 	fmt.Println("What would you like to do?")
 	runaway := false
 	for n.hitpoints >= 0 || runaway == true { //Loop combat until the opponent is dead or the player escapes

@@ -4,11 +4,16 @@ import "fmt"
 
 // 'Chests' contains all objects which contain equipment, whether it's a jar, a bookcase, a desk or actually a chest.
 
+type chest struct {
+	physObject
+	contents []string
+}
+
 var chests = map[string]*chest{
 	"Cave Chest": {physObject: physObject{name: "Cave Chest", integrity: 100}, contents: []string{"Wooden Shield", "Torch", "Climbing Rope", "Tinderbox"}},
 }
 
-func open(c chest) *equipment {
+func openChest(c chest) *equipment {
 	fmt.Println("You see something inside:")
 	for index, element := range c.contents {
 		fmt.Printf("\t%d - %s\n", index+1, element)

@@ -2,6 +2,11 @@ package main
 
 // 'Equipment' is all things that can be carried by an organism, which are NOT a weapon or shield
 
+type equipment struct {
+	physObject
+	abilities []string
+}
+
 var equipmentItems = map[string]*equipment{
 	"Empty":         {physObject: physObject{name: "Empty", integrity: 0}, abilities: []string{}},
 	"Torch":         {physObject: physObject{name: "Torch", integrity: 100}, abilities: []string{"Weak Light"}},

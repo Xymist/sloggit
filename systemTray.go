@@ -6,6 +6,7 @@ import (
 
 	"github.com/getlantern/systray"
 	"github.com/getlantern/systray/example/icon"
+	"github.com/skratchdot/open-golang/open"
 )
 
 func onReady() {
@@ -13,17 +14,22 @@ func onReady() {
 	systray.SetTitle("Sloggit")
 	systray.SetTooltip("A little text adventure")
 	mQuit := systray.AddMenuItem("Quit", "Exit Sloggit")
+	mURL := systray.AddMenuItem("Source", "Go To Github")
 	go func() {
-		<-mQuit.ClickedCh
-		systray.Quit()
-		fmt.Println("Quitting now...")
-		os.Exit(0)
+		for {
+			select {
+			case <-mQuit.ClickedCh:
+				systray.Quit()
+				fmt.Println("Quitting now...")
+				os.Exit(0)
+			case <-mURL.ClickedCh:
+				open.Run("https://github.com/Xymist/sloggit")
+			}
+		}
 	}()
 
 	go func() {
-		var introduction = "You wake up in a clearing in the forest, resting on a thick carpet of pine needles. You stand up and look about you, your hand instinctively reaching for your Rusty Sword and Battered Shield. There is a chill in the air; from that and the trees you deduce that you must be many hundreds of miles further North than where you laid down to sleep. Suspecting foul play, you check that you are undamaged and set off through the trees...\n\n"
-
-		g := &Game{Welcome: introduction, playerCharacter: generateCharacter()}
+		g := &Game{Welcome: introductionText, playerCharacter: generateCharacter()}
 		g.Play()
 	}()
 }
