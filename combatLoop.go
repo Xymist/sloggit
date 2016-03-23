@@ -41,7 +41,7 @@ func attack(attacker organism, h hittable, weapon *weapon) {
 }
 
 func playerTurn(player *character, mob *npc, runaway bool) bool {
-	fmt.Printf("You have %d Health. Your opponent has %d. What would you like to do?\n", player.hitpoints, mob.hitpoints)
+	fmt.Printf("You have %d Health. Your opponent has %d.\nWhat would you like to do?\n", player.hitpoints, mob.hitpoints)
 	fmt.Print("1: Attack | 2: Run away!\n\n")
 	playerChoice := 0
 	fmt.Scan(&playerChoice)
@@ -77,7 +77,7 @@ func combatCycle(player *character, mob *npc, runaway bool) bool {
 		mobTurn(player, mob)
 	}
 	if runaway == false {
-		if mob.hitpoints <= 0 {
+		if mob.hitpoints <= 0 && player.hitpoints >= 1 {
 			fmt.Printf("You defeated the %s! You gain %d experience points.\n\n", mob.name, mob.size)
 			player.experience += mob.size
 		}

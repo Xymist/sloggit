@@ -6,9 +6,9 @@ type character struct { //Player characters. Currently singular, but may not be 
 	organism
 	weapon1 *weapon
 	*shield
-	size                                                                                   int
-	inventoryOne, inventoryTwo, inventoryThree, inventoryFour, inventoryFive, inventorySix *equipment
-	experience                                                                             int
+	size       int
+	inventory  []*equipment
+	experience int
 }
 
 func (c *character) takeDamage(damage int) {
@@ -57,16 +57,11 @@ func generateCharacter() *character {
 				wisdom:       wisd,
 			},
 		},
-		weapon1:        weaponry["Rusty Sword"],
-		shield:         defences["Battered Shield"],
-		inventoryOne:   equipmentItems["Empty"],
-		inventoryTwo:   equipmentItems["Empty"],
-		inventoryThree: equipmentItems["Empty"],
-		inventoryFour:  equipmentItems["Empty"],
-		inventoryFive:  equipmentItems["Empty"],
-		inventorySix:   equipmentItems["Empty"],
-		size:           1,
-		experience:     0,
+		weapon1:    weaponry["Rusty Sword"],
+		shield:     defences["Battered Shield"],
+		inventory:  []*equipment{},
+		size:       1,
+		experience: 0,
 	}
 	return generatedCharacter
 }

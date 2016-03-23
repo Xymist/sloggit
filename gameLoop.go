@@ -24,6 +24,16 @@ func (g *game) Play() {
 	for {
 		runaway := false
 		fmt.Println(currentLocation.description) //Where are you?
+		priorLevel := player.size
+		player.size = int(math.Floor(math.Sqrt(float64(player.experience))))
+		fmt.Printf("Armament: %s and %s\n", player.weapon1.name, player.shield.name)
+		fmt.Println("Inventory Slots: ", player.inventory)
+		fmt.Printf("Health: %d\n", player.hitpoints) //Print health information
+		if player.size > priorLevel {
+			fmt.Printf("You levelled up! New level: %d\n\n", player.size)
+		} else {
+			fmt.Printf("Level: %d\n\n", player.size)
+		}
 		if currentLocation.encounterChance > genRandom(0, 99) {
 			runaway = combatCycle(player, encounterMob(currentLocation.locationEncounter), false)
 		}
@@ -38,16 +48,6 @@ func (g *game) Play() {
 		}
 		if player.hitpoints > player.maxHitpoints {
 			player.hitpoints = player.maxHitpoints
-		}
-		priorLevel := player.size
-		player.size = int(math.Floor(math.Sqrt(float64(player.experience))))
-		fmt.Printf("Armament: %s and %s\n", player.weapon1.name, player.shield.name)
-		//fmt.Println("Inventory Slots: ", player.inventoryOne.name, player.inventoryTwo.name, player.inventoryThree.name, player.inventoryFour.name, player.inventoryFive.name, player.inventorySix.name)
-		fmt.Printf("Health: %d\n", player.hitpoints) //Print health information
-		if player.size > priorLevel {
-			fmt.Printf("You levelled up! New level: %d\n\n", player.size)
-		} else {
-			fmt.Printf("Level: %d\n\n", player.size)
 		}
 		fmt.Println("What would you like to do?") //Where can you go from here?
 		for index, loc := range currentLocation.transitions {
