@@ -8,6 +8,7 @@ type character struct { //Player characters. Currently singular, but may not be 
 	*shield
 	size                                                                                   int
 	inventoryOne, inventoryTwo, inventoryThree, inventoryFour, inventoryFive, inventorySix *equipment
+	experience                                                                             int
 }
 
 func (c *character) takeDamage(damage int) {
@@ -65,6 +66,7 @@ func generateCharacter() *character {
 		inventoryFive:  equipmentItems["Empty"],
 		inventorySix:   equipmentItems["Empty"],
 		size:           1,
+		experience:     0,
 	}
 	return generatedCharacter
 }

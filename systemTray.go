@@ -29,7 +29,7 @@ func onReady() {
 	}()
 
 	go func() {
-		g := &Game{Welcome: introductionText, playerCharacter: generateCharacter()}
+		g := &game{Welcome: introductionText, playerCharacter: generateCharacter()}
 		g.Play()
 		os.Exit(0)
 	}()
