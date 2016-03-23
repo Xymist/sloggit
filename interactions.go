@@ -8,8 +8,8 @@ type entity interface {
 	inspect()
 }
 
-func attack(h hittable, damage int, weapon weapon) {
-	h.takeDamage(damage)
+func attack(h hittable, weapon weapon) {
+	h.takeDamage(weapon.baseDamage)
 	weapon.integrity--
 }
 
