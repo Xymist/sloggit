@@ -1,10 +1,6 @@
 package main
 
-import (
-	"fmt"
-	"math/rand"
-	"time"
-)
+import "fmt"
 
 type character struct { //Player characters. Currently singular, but may not be later.
 	organism
@@ -20,16 +16,14 @@ func generateCharacter() character {
 	fmt.Println("Your name is ", myName)
 
 	var agil, char, dext, inte, stre, wisd int
-	rSource := rand.NewSource(time.Now().UnixNano())
-	rRand := rand.New(rSource)
 	accept := "N"
-	for accept == "N" {
-		agil = rRand.Intn(20)
-		char = rRand.Intn(20)
-		dext = rRand.Intn(20)
-		inte = rRand.Intn(20)
-		stre = rRand.Intn(20)
-		wisd = rRand.Intn(20)
+	for accept == "N" || accept == "n" {
+		agil = genRandom(3, 20)
+		char = genRandom(3, 20)
+		dext = genRandom(3, 20)
+		inte = genRandom(3, 20)
+		stre = genRandom(3, 20)
+		wisd = genRandom(3, 20)
 
 		fmt.Println("Agility: ", agil, "Charisma: ", char, "Dexterity: ", dext, "Intelligence: ", inte, "Strength: ", stre, "Wisdom: ", wisd)
 		fmt.Println("Is this OK? (Y/N)")

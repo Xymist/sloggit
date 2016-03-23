@@ -1,10 +1,6 @@
 package main
 
-import (
-	"fmt"
-	"math/rand"
-	"time"
-)
+import "fmt"
 
 // Event may happen to a player
 type Event struct {
@@ -25,9 +21,7 @@ var evts = map[string]*Event{
 
 // ProcessEvent allows the game to notice what happened
 func (e *Event) ProcessEvent() int {
-	s1 := rand.NewSource(time.Now().UnixNano())
-	r1 := rand.New(s1)
-	if e.Chance >= r1.Intn(100) {
+	if e.Chance >= genRandom(0, 99) {
 		if e.Type == "Combat" {
 			fmt.Println("Combat Event")
 		}
