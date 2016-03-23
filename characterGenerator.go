@@ -6,6 +6,13 @@ import (
 	"time"
 )
 
+type character struct { //Player characters. Currently singular, but may not be later.
+	organism
+	*weapon
+	*shield
+	inventoryOne, inventoryTwo, inventoryThree, inventoryFour, inventoryFive, inventorySix *equipment
+}
+
 func generateCharacter() character {
 	myName := "Steve"
 	fmt.Println("Please enter your name:")
@@ -44,15 +51,15 @@ func generateCharacter() character {
 				strength:     stre,
 				wisdom:       wisd,
 			},
-			inventoryOne:   equipmentItems["Empty"],
-			inventoryTwo:   equipmentItems["Empty"],
-			inventoryThree: equipmentItems["Empty"],
-			inventoryFour:  equipmentItems["Empty"],
-			inventoryFive:  equipmentItems["Empty"],
-			inventorySix:   equipmentItems["Empty"],
 		},
-		weapon: weaponry["Rusty Sword"],
-		shield: defences["Battered Shield"],
+		weapon:         weaponry["Rusty Sword"],
+		shield:         defences["Battered Shield"],
+		inventoryOne:   equipmentItems["Empty"],
+		inventoryTwo:   equipmentItems["Empty"],
+		inventoryThree: equipmentItems["Empty"],
+		inventoryFour:  equipmentItems["Empty"],
+		inventoryFive:  equipmentItems["Empty"],
+		inventorySix:   equipmentItems["Empty"],
 	}
 	return generatedCharacter
 }

@@ -15,5 +15,8 @@ func (w *weapon) inspect() {
 }
 
 var weaponry = map[string]*weapon{
-	"Rusty Sword": {physObject: physObject{name: "Rusty Sword", integrity: 100}, baseDamage: 3, bonuses: []string{"No Bonus"}},
+	"Rusty Sword":  {physObject: physObject{name: "Rusty Sword", integrity: 100}, baseDamage: 20, bonuses: []string{"No Bonus"}},
+	"Rusty Dagger": {physObject: physObject{name: "Rusty Dagger", integrity: 60}, baseDamage: 12, bonuses: []string{"No Bonus"}},
+	"Bear Paw":     {physObject: physObject{name: "Bear Paw", integrity: 100}, baseDamage: 20, bonuses: []string{"No Bonus"}},
+	"Bear Jaws":    {physObject: physObject{name: "Bear Jaws", integrity: 100}, baseDamage: 40, bonuses: []string{"No Bonus"}},
 }
