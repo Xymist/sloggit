@@ -23,6 +23,8 @@ func openChest(c *chest, player *character) {
 		fmt.Println("Choose item: ")
 		fmt.Scan(&choice)
 	}
+	choice = choice - 1
+	newContents := []string{}
 	if equipmentItems[c.contents[choice]] != nil {
 		loot := equipmentItems[c.contents[choice]]
 		player.inventory = append(player.inventory, loot)
@@ -36,10 +38,10 @@ func openChest(c *chest, player *character) {
 		player.weapon1 = weaponry[c.contents[choice]]
 		fmt.Printf("Weapon upgraded to %s!\n", player.weapon1.name)
 	}
-}
-
-func (c *chest) takeItem(item int) {
-	s := c.contents
-	s = append(s[:item], s[item+1:]...)
-	c.contents = s
+	for _, item := range c.contents {
+		if item != c.contents[choice] {
+			newContents = append(newContents, item)
+		}
+	}
+	c.contents = newContents
 }
