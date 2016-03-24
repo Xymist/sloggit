@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+command = ARGV.shift
+
+case command
+when 'windows'
+  system "env GOOS=windows GOARCH=amd64 go build && mv sloggit.exe sloggit-win64.exe"
+  system "env GOOS=windows GOARCH=386 go build && mv sloggit.exe sloggit-win32.exe"
+  exit 0
+when 'osx'
+  system "env GOOS=darwin GOARCH=amd64 go build && mv sloggit sloggit-osx64"
+  system "env GOOS=darwin GOARCH=386 go build && mv sloggit sloggit-osx32"
+  exit 0
+when 'all'
+  system "env GOOS=windows GOARCH=amd64 go build && mv sloggit.exe sloggit-win64.exe"
+  system "env GOOS=windows GOARCH=386 go build && mv sloggit.exe sloggit-win32.exe"
+  system "env GOOS=darwin GOARCH=amd64 go build && mv sloggit sloggit-osx64"
+  system "env GOOS=darwin GOARCH=386 go build && mv sloggit sloggit-osx32"
+  system "env GOOS=linux GOARCH=amd64 go build && mv sloggit sloggit-linux64"
+  system "env GOOS=linux GOARCH=386 go build && mv sloggit sloggit-linux32"
+  exit 0
+else
+  p "Usage: windows/osx/all"
+  exit 1
+end
