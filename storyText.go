@@ -36,6 +36,10 @@ var treeClimbText = ""
 //Keep heading North
 var farNorthText = ""
 
+var caveExitText = ""
+
+var caveDepthsText = ""
+
 //Open the chest
 var caveChestText = "You approach the chest, and see that although it is heavily banded the lock has rusted almost through. You could probably break it open."
 

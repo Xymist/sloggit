@@ -3,6 +3,8 @@ package main
 import (
 	"math/rand"
 	"time"
+
+	"github.com/getlantern/systray"
 )
 
 func genRandom(min, max int) int {
@@ -12,7 +14,5 @@ func genRandom(min, max int) int {
 }
 
 func main() {
-	//systray.Run(onReady)
-	g := &game{Welcome: introductionText, playerCharacter: generateCharacter()}
-	g.Play()
+	systray.Run(onReady)
 }
