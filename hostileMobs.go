@@ -7,15 +7,7 @@ type npc struct { //Includes things like motile trees; any agent that is not a p
 	weapon2 *weapon
 	*shield
 	size  int
-	speed int
-}
-
-func (n *npc) takeDamage(damage int) {
-	n.hitpoints = n.hitpoints - damage
-}
-
-func (n *npc) updateStatus(statusEffect *statusEffect) {
-	n.statusEffect = statusEffect
+	speed float64
 }
 
 var hostileMobs = map[string]*npc{

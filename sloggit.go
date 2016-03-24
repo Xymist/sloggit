@@ -12,7 +12,7 @@ func genRandom(min, max int) int {
 }
 
 func main() {
-	//systray.Run(onReady)
+	//systray.Run(onReady) //Currently not using systray; see systemTray.go for details.
 	g := &game{Welcome: introductionText, playerCharacter: generateCharacter()}
 	g.Play()
 }

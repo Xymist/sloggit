@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 type character struct { //Player characters. Currently singular, but may not be later.
 	organism
@@ -11,29 +14,21 @@ type character struct { //Player characters. Currently singular, but may not be 
 	experience int
 }
 
-func (c *character) takeDamage(damage int) {
-	c.hitpoints = c.hitpoints - damage
-}
-
-func (c *character) updateStatus(statusEffect *statusEffect) {
-	c.statusEffect = statusEffect
-}
-
 func generateCharacter() *character {
 	myName := "Steve"
 	fmt.Println("Please enter your name:")
 	fmt.Scan(&myName)
 	fmt.Println("Your name is ", myName)
 
-	var agil, char, dext, inte, stre, wisd int
+	var agil, char, dext, inte, stre, wisd float64
 	accept := "N"
 	for accept == "N" || accept == "n" {
-		agil = genRandom(3, 20)
-		char = genRandom(3, 20)
-		dext = genRandom(3, 20)
-		inte = genRandom(3, 20)
-		stre = genRandom(3, 20)
-		wisd = genRandom(3, 20)
+		agil = float64(genRandom(3, 20))
+		char = float64(genRandom(3, 20))
+		dext = float64(genRandom(3, 20))
+		inte = float64(genRandom(3, 20))
+		stre = float64(genRandom(3, 20))
+		wisd = float64(genRandom(3, 20))
 
 		fmt.Println("Agility: ", agil, "Charisma: ", char, "Dexterity: ", dext, "Intelligence: ", inte, "Strength: ", stre, "Wisdom: ", wisd)
 		fmt.Println("Is this OK? (y/N)")
@@ -46,8 +41,8 @@ func generateCharacter() *character {
 			description:  "This is you!",
 			isPlayer:     true,
 			age:          16,
-			hitpoints:    100,
-			maxHitpoints: 100,
+			hitpoints:    math.Floor(100.0 + (stre * 1.5)),
+			maxHitpoints: math.Floor(100.0 + (stre * 1.5)),
 			traitList: traitList{
 				agility:      agil,
 				charisma:     char,

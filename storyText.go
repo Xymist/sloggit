@@ -31,13 +31,15 @@ var cliffJumpText = "Well, that was pretty daft, wasn't it?\n"
 var caveEntranceText = "It is cool and dark in here, though the floor is dry dirt. The sounds from outside are muffled. You wish for a torch, but through the gloom you spy a banded chest against the wall.\n"
 
 //Look for a good tree to climb
-var treeClimbText = ""
+var treeClimbText = "The branches are thin but springy, and easily hold your weight. You stay close to the trunk nonetheless, ignoring the sticky resin which adheres to your clothes and hands as you climb higher. You find a spot with a good view, and start scanning the expanse for signs of habitation.\n"
 
 //Keep heading North
 var farNorthText = ""
 
+//Leave cave
 var caveExitText = ""
 
+//Venture further into the cave
 var caveDepthsText = ""
 
 //Open the chest

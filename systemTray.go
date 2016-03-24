@@ -1,5 +1,8 @@
 package main
 
+//This works perfectly well on Linux, but for whatever reason totally fails to compile for OSX and breaks the build for Windows.
+//On hold until I have an answer from the package maintainer.
+
 /*import (
 	"fmt"
 	"os"

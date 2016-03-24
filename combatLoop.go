@@ -35,14 +35,14 @@ func attack(attacker organism, h hittable, weapon *weapon) {
 }
 
 func playerTurn(player *character, mob *npc, runaway bool) bool {
-	fmt.Printf("You have %d Health. Your opponent has %d.\nWhat would you like to do?\n", player.hitpoints, mob.hitpoints)
+	fmt.Printf("You have %.f Health. Your opponent has %.f.\nWhat would you like to do?\n", player.hitpoints, mob.hitpoints)
 	fmt.Print("1: Attack | 2: Run away!\n\n")
 	playerChoice := 0
 	fmt.Scan(&playerChoice)
 	if playerChoice == 1 {
 		attack(player.organism, mob, player.weapon1)
 	} else {
-		if genRandom(5, 40) > mob.speed {
+		if float64(genRandom(5, 40))+player.organism.traitList.agility > mob.speed {
 			runaway = true
 		} else {
 			fmt.Printf("You are not fast enough to escape the %s.\n", mob.name)
@@ -52,7 +52,7 @@ func playerTurn(player *character, mob *npc, runaway bool) bool {
 }
 
 func mobTurn(player *character, mob *npc) {
-	if genRandom(1, 100) >= 30 {
+	if genRandom(1, 100) > 30 {
 		attack(mob.organism, player, mob.weapon1)
 	} else {
 		attack(mob.organism, player, mob.weapon2)

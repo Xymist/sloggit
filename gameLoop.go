@@ -31,7 +31,7 @@ func (g *game) Play() {
 		for index, invItem := range player.inventory {
 			fmt.Printf("%d: %s, ", index+1, invItem.name)
 		}
-		fmt.Printf("\nHealth: %d\n", player.hitpoints) //Print health information
+		fmt.Printf("\nHealth: %.f\n", player.hitpoints) //Print health information
 		if player.size > priorLevel {
 			fmt.Printf("You levelled up! New level: %d\n\n", player.size)
 		} else {
