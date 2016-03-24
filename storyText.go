@@ -36,6 +36,9 @@ var treeClimbText = ""
 //Keep heading North
 var farNorthText = ""
 
+//Open the chest
+var caveChestText = "You approach the chest, and see that although it is heavily banded the lock has rusted almost through. You could probably break it open."
+
 //Head towards the shadows
 var dungeonEntranceText = "As you approach the dark smear it turns out to be a small stone archway embedded in the hillside. Everything else around you looks untouched by human hand; this doesn't belong here...\n"
 

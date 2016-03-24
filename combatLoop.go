@@ -7,19 +7,13 @@ type combatAction struct {
 	successChance int
 }
 
-var combatOptions = map[string]*combatAction{
-	"Attack!": {name: "Attack!", successChance: 50},
-	"Block":   {name: "Block", successChance: 50},
-	"Retreat": {name: "Retreat", successChance: 80},
-}
-
 func attack(attacker organism, h hittable, weapon *weapon) {
 	var attackDamage = genRandom(weapon.baseDamage-5, weapon.baseDamage+5)
 	h.takeDamage(attackDamage)
 	if attacker.isPlayer == false {
-		fmt.Printf("The %s hits you for %d damage\n", attacker.name, attackDamage)
+		fmt.Printf("The %s hits you with its %s for %d damage\n", attacker.name, weapon.name, attackDamage)
 	} else {
-		fmt.Printf("You strike the enemy for %d damage.\n", attackDamage)
+		fmt.Printf("You strike the enemy with your %s for %d damage.\n", weapon.name, attackDamage)
 	}
 	insult := genRandom(0, 99)
 	if weapon.bonus.chance > insult {
@@ -50,6 +44,8 @@ func playerTurn(player *character, mob *npc, runaway bool) bool {
 	} else {
 		if genRandom(5, 40) > mob.speed {
 			runaway = true
+		} else {
+			fmt.Printf("You are not fast enough to escape the %s.\n", mob.name)
 		}
 	}
 	return runaway

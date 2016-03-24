@@ -44,7 +44,7 @@ var hostileMobs = map[string]*npc{
 	"Grizzly Bear": {organism: organism{
 		name:        "Grizzly Bear",
 		description: "This creature would be peaceful, if you had stayed away",
-		hitpoints:   75,
+		hitpoints:   60,
 	},
 		hostile: true,
 		weapon1: weaponry["Bear Paw"],

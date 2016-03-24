@@ -38,7 +38,11 @@ func (g *game) Play() {
 			fmt.Printf("Level: %d\n\n", player.size)
 		}
 		if currentLocation.encounterChance > genRandom(0, 99) {
-			runaway = combatCycle(player, encounterMob(currentLocation.locationEncounter), false)
+			if encounterMob(currentLocation.locationEncounter) != nil {
+				runaway = combatCycle(player, encounterMob(currentLocation.locationEncounter), false)
+			} else {
+				openChest(chests[events[currentLocation.locationEncounter].name], player)
+			}
 		}
 		if player.hitpoints <= 0 { //Are you dead?
 			fmt.Println("You are dead, game over!")
