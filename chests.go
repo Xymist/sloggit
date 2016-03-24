@@ -13,7 +13,7 @@ var chests = map[string]*chest{
 	"Cave Chest": {physObject: physObject{name: "Cave Chest", integrity: 100}, contents: []string{"Wooden Shield", "Torch", "Climbing Rope", "Tinderbox"}},
 }
 
-func openChest(c chest) *equipment {
+func openChest(c chest, player *character) *equipment {
 	fmt.Println("You see something inside:")
 	for index, element := range c.contents {
 		fmt.Printf("\t%d - %s\n", index+1, element)
@@ -24,5 +24,6 @@ func openChest(c chest) *equipment {
 		fmt.Scan(&choice)
 	}
 	loot := equipmentItems[c.contents[choice]]
+	player.inventory = append(player.inventory, loot)
 	return loot
 }

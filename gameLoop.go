@@ -27,8 +27,11 @@ func (g *game) Play() {
 		priorLevel := player.size
 		player.size = int(math.Floor(math.Sqrt(float64(player.experience))))
 		fmt.Printf("Armament: %s and %s\n", player.weapon1.name, player.shield.name)
-		fmt.Println("Inventory Slots: ", player.inventory)
-		fmt.Printf("Health: %d\n", player.hitpoints) //Print health information
+		fmt.Println("Inventory Slots: ")
+		for index, invItem := range player.inventory {
+			fmt.Printf("%d: %s, ", index+1, invItem.name)
+		}
+		fmt.Printf("\nHealth: %d\n", player.hitpoints) //Print health information
 		if player.size > priorLevel {
 			fmt.Printf("You levelled up! New level: %d\n\n", player.size)
 		} else {
