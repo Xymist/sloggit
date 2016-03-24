@@ -1,6 +1,6 @@
 package main
 
-import (
+/*import (
 	"fmt"
 	"os"
 
@@ -34,3 +34,4 @@ func onReady() {
 		os.Exit(0)
 	}()
 }
+*/
