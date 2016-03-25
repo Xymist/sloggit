@@ -19,8 +19,10 @@ func encounterMob(s string) *npc {
 }
 
 var events = map[string]*event{
-	"Monster Attack": {name: "Monster Attack", npcs: []string{"Small Kobold", "Kobold"}},
-	"Grizzly Attack": {name: "Grizzly Attack", npcs: []string{"Grizzly Bear"}},
-	"Cliff Dive":     {name: "Cliff Dive", npcs: []string{"Craggy Cliff"}},
-	"Cave Chest":     {name: "Cave Chest", npcs: []string{}, chest: "Cave Chest"},
+	"Monster Attack":         {name: "Monster Attack", npcs: []string{"Small Kobold", "Kobold"}},
+	"Grizzly Attack":         {name: "Grizzly Attack", npcs: []string{"Grizzly Bear"}},
+	"Cliff Dive":             {name: "Cliff Dive", npcs: []string{"Craggy Cliff"}},
+	"Cave Chest":             {name: "Cave Chest", npcs: []string{}, chest: "Cave Chest"},
+	"Tree Hollow":            {name: "Tree Hollow", npcs: []string{}, chest: "Tree Hollow"},
+	"Treecreature Encounter": {name: "Treecreature Encounter", npcs: []string{"Vicious Squirrel"}},
 }

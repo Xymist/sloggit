@@ -33,6 +33,8 @@ var weaponry = map[string]*weapon{
 	"Bear Paw":     {physObject: physObject{name: "Bear Paw", integrity: 100}, baseDamage: 20, bonus: damageBonuses["Vicious Blow"]},
 	"Bear Jaws":    {physObject: physObject{name: "Bear Jaws", integrity: 100}, baseDamage: 40, bonus: damageBonuses["Crushing Bite"]},
 	"Spiked Rocks": {physObject: physObject{name: "Spiked Rocks", integrity: 100}, baseDamage: 1000, bonus: damageBonuses["No Bonus"]},
+	"Sharp Teeth":  {physObject: physObject{name: "Sharp Teeth", integrity: 100}, baseDamage: 7, bonus: damageBonuses["No Bonus"]},
+	"Tiny Claws":   {physObject: physObject{name: "Tiny Claws", integrity: 100}, baseDamage: 12, bonus: damageBonuses["No Bonus"]},
 }
 
 var damageBonuses = map[string]*damageBonus{

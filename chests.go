@@ -10,7 +10,8 @@ type chest struct {
 }
 
 var chests = map[string]*chest{
-	"Cave Chest": {physObject: physObject{name: "Cave Chest", integrity: 100}, contents: []string{"Wooden Shield", "Torch", "Climbing Rope", "Tinderbox"}},
+	"Cave Chest":  {physObject: physObject{name: "Cave Chest", integrity: 100}, contents: []string{"Wooden Shield", "Torch", "Climbing Rope", "Tinderbox"}},
+	"Tree Hollow": {physObject: physObject{name: "Tree Hollow", integrity: 100}, contents: []string{"Acorn", "Gold Coin", "Shiny Key"}},
 }
 
 func openChest(c *chest, player *character) {

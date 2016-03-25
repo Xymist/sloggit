@@ -22,8 +22,9 @@ var locationMap = map[string]*Location{
 	"Venture further into the cave":  {description: caveDepthsText, transitions: []string{"Back to cave entrance"}, locationEncounter: "Monster Attack", encounterChance: 50},
 	"Back to cave entrance":          {description: caveEntranceText, transitions: []string{"Open Cave Chest", "Venture further into the cave", "Leave cave"}, locationEncounter: "Monster Attack", encounterChance: 20},
 	"Leave cave":                     {description: caveExitText, transitions: []string{"Duck into the cave", "Look for a good tree to climb", "Head further North"}, locationEncounter: "Monster Attack", encounterChance: 30},
-	"Look for a good tree to climb":  {description: treeClimbText, transitions: []string{}, locationEncounter: "Monster Attack", encounterChance: 30},
+	"Look for a good tree to climb":  {description: treeClimbText, transitions: []string{"Examine hole in tree trunk"}, locationEncounter: "Treecreature Encounter", encounterChance: 50},
 	"Head further North":             {description: farNorthText, transitions: []string{}, locationEncounter: "Monster Attack", encounterChance: 30},
+	"Examine hole in tree trunk":     {description: farNorthText, transitions: []string{}, locationEncounter: "Tree Hollow", encounterChance: 100},
 	"Enter the dungeon":              {description: dungeonEntranceText, transitions: []string{"Fling yourself into the portal"}, locationEncounter: "Monster Attack", encounterChance: 30},
 	"Fling yourself into the portal": {description: portalFallText, transitions: []string{}, locationEncounter: "Monster Attack", encounterChance: 30},
 }

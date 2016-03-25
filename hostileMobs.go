@@ -55,4 +55,15 @@ var hostileMobs = map[string]*npc{
 		size:    5,
 		speed:   0,
 	},
+	"Vicious Squirrel": {organism: organism{
+		name:        "Vicious Squirrel",
+		description: "He's not above going for the nuts.",
+		hitpoints:   15,
+	},
+		hostile: true,
+		weapon1: weaponry["Sharp Teeth"],
+		weapon2: weaponry["Tiny Claws"],
+		size:    1,
+		speed:   5,
+	},
 }
