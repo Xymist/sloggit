@@ -45,7 +45,7 @@ func playerTurn(player *character, mob *npc, runaway bool) bool {
 		if float64(genRandom(5, 40))+player.organism.traitList.agility > mob.speed {
 			runaway = true
 		} else {
-			fmt.Printf("You are not fast enough to escape the %s.\n", mob.name)
+			fmt.Printf("You were not fast enough to escape the %s.\n", mob.name)
 		}
 	}
 	return runaway
